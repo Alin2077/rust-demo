@@ -1,5 +1,7 @@
+use std::char;
+
 use rand::Rng;
-use rand::distributions::{Distribution, Uniform, Standard};
+use rand::distributions::{Distribution, Uniform, Standard, Alphanumeric};
 use rand_distr::{NormalError, Normal};
 use rand::thread_rng;
 
@@ -68,11 +70,45 @@ impl Distribution<Point> for Standard {
     }
 }
 
+#[allow(dead_code)]
 pub fn rng_standard() {
     let mut rng = thread_rng();
     let rand_tuple = rng.gen::<(i32, bool, f64)>();
     let rand_point: Point = rng.gen();
     println!("Random tuple: {:?}", rand_tuple);
     println!("Random point: {:?}", rand_point);
+}
+
+#[allow(dead_code)]
+///从一组字母数字字符创建随机密码
+/// 随机生成一个给定长度的ASCII字符串，范围为A-Z，a-z，0-9，使用字母数字样本
+pub fn rng_alp() {
+    let rng_string: String = thread_rng()
+    .sample_iter(&Alphanumeric)
+    .take(30)
+    .map(char::from)
+    .collect();
+
+    println!("{}", rng_string);
+}
+
+
+#[allow(dead_code)]
+/// 从一组用户定义字符创建随机密码
+pub fn rng_alp_range() {
+    const CHARSET: &[u8] = b"ABCDEFGHIJKLMNOPQRSTUVWXYZ\
+    abcdefghijklmnopqrstuvwxyz\
+    0123456789)(*&^%$#@!~";
+    const PASSWORD_LEN: usize = 30;
+    let mut rng = rand::thread_rng();
+
+    let password: String = (0..PASSWORD_LEN)
+            .map(|_| {
+                let idx = rng.gen_range(0..CHARSET.len());
+                CHARSET[idx] as char
+            })
+            .collect();
+
+    println!("{:?}",password);
 }
 
