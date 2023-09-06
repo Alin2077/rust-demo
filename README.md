@@ -1,2 +1,2 @@
 # rust-demo
-a rust demo collection
+a rust demo collection,for study rust 
