@@ -5,7 +5,7 @@
 // use rand_fun::rng_alp_range  as Rand;
 
 mod cross_fun;
-use cross_fun::find_max as Cross;
+use cross_fun::lazy_mutex as Cross;
 
 fn main() {
     
@@ -13,8 +13,10 @@ fn main() {
 
     // Rand();
 
-    let arr = &[1, 25, -4, 10];
-    let max = Cross(arr);
-    println!("max: {:#?}", max);
+    // let arr = &[1, 25, -4, 10];
+    // let max = Cross(arr);
+    // println!("max: {:#?}", max);
+
+    Cross();
 
 }
