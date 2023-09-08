@@ -4,6 +4,11 @@ use std::thread;
 use std::time::Duration;
 use crossbeam_channel::{bounded,unbounded};
 
+use std::sync::mpsc::{channel, RecvError};
+use threadpool::ThreadPool;
+use num::complex::Complex;
+use image::{ImageBuffer, Pixel, Rgb};
+
 
 /// ## 生成短期线程
 #[allow(dead_code)] //允许死代码，即允许有方法未被使用
@@ -126,6 +131,35 @@ pub fn lazy_mutex() {
     }
     insert("grape");
 }
+
+/// ## 将绘制分形的线程分派到线程池
+// pub fn image_thread() -> Result<(), Box<dyn Error>> {
+//     let (width, height) = (1920,1080);
+//     let mut img = ImageBuffer::new(width, height);
+//     let iterations = 300;
+
+//     let c = Complex::new(-0.8, 0.156);
+
+//     let pool = ThreadPool::new(num_cpus::get());
+//     let (tx, rx) = channel();
+
+//     for y in 0..height {
+//         let tx = tx.clone();
+
+//         pool.execute(move||for x in 0..width {
+//             let i = julia(c, x, y, width, height, iterations);
+//             let pixel = wavelength_to_rgb(380+ i*40 / iterations);
+//             tx.send((x, y, pixel)).expect("Could not send data!");
+//         });
+//     }
+
+//     for _ in 0..(width * height) {
+//         let (x, y ,pixel) = rx.recv()?;
+//         img.put_pixel(x, y, pixel);
+//     }
+//     let _ = img.save("output.png")?;
+//     Ok(())
+// }
 
 
 

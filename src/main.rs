@@ -4,8 +4,11 @@
 // mod rand_fun;
 // use rand_fun::rng_alp_range  as Rand;
 
-mod cross_fun;
-use cross_fun::lazy_mutex as Cross;
+// mod cross_fun;
+// use cross_fun::image_thread as Cross;
+
+mod parallel_fun;
+use parallel_fun::rayon_any_all as Rayon;
 
 fn main() {
     
@@ -17,6 +20,8 @@ fn main() {
     // let max = Cross(arr);
     // println!("max: {:#?}", max);
 
-    Cross();
+    // Cross();
+
+    Rayon();
 
 }
