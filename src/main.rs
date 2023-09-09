@@ -7,8 +7,12 @@
 // mod cross_fun;
 // use cross_fun::image_thread as Cross;
 
-mod parallel_fun;
-use parallel_fun::rayon_any_all as Rayon;
+// mod parallel_fun;
+// use parallel_fun::map_reduce as Rayon;
+
+mod password_fun;
+use password_fun::get_sha256 as Pas;
+
 
 fn main() {
     
@@ -22,6 +26,8 @@ fn main() {
 
     // Cross();
 
-    Rayon();
+    // Rayon();
+
+    Pas();
 
 }
