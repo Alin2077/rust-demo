@@ -10,8 +10,11 @@
 // mod parallel_fun;
 // use parallel_fun::map_reduce as Rayon;
 
-mod password_fun;
-use password_fun::get_sha256 as Pas;
+// mod password_fun;
+// use password_fun::get_sha256 as Pas;
+
+mod time_fun;
+use time_fun::time_calcul as Time;
 
 
 fn main() {
@@ -28,6 +31,8 @@ fn main() {
 
     // Rayon();
 
-    Pas();
+    // Pas();
+
+    Time();
 
 }
