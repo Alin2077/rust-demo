@@ -13,9 +13,14 @@
 // mod password_fun;
 // use password_fun::get_sha256 as Pas;
 
-mod time_fun;
-use time_fun::time_calcul as Time;
+// mod time_fun;
+// use time_fun::time_calcul as Time;
 
+// mod url_fun;
+// use url_fun::extrate_url as Url;
+
+mod mime_fun;
+use mime_fun::get_mime as Mime;
 
 fn main() {
     
@@ -33,6 +38,10 @@ fn main() {
 
     // Pas();
 
-    Time();
+    // Time();
+
+    // Url();
+
+    Mime();
 
 }
